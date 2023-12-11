@@ -1,0 +1,56 @@
+
+<div class="container">
+    <h2>Sales List</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Department Name</th>
+          <th>Employees Count</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td>{{ sale.departmentName }}</td>
+          <td>{{ sale.employeesCount }}</td>
+          <td>{{ sale.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="container ">
+    <div class="row h-100 w-100 justify-content-center align-items-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <h2>Add Sales</h2>
+
+            <form [formGroup]="addProductForm" (ngSubmit)="addSales()">
+                <div class="form-group">
+                  <label for="productName">Product Name</label>
+                  <input type="text" class="form-control" id="productName" formControlName="productName">
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <select class="form-control" id="quantity" formControlName="quantity">
+                    <option value="">Select Quantity</option>
+                    <option *ngFor="let qty of quantities" [value]="qty">{{ qty }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control" id="price" formControlName="price">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+              </form>
+            </div>
+
+
+            </div>
+    </div>
+        
+   
+   
+    
+  
+  

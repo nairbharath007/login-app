@@ -1,0 +1,25 @@
+{
+    "employees": [
+      { "employeeNumber": 1, "username": "Name1", "address": "New Delhi", "DOB": "1980-01-01" },
+      { "employeeNumber": 2, "username": "Name2", "address": "Bombay", "DOB": "1980-01-01" },
+      { "employeeNumber": 3, "username": "Name3", "address": "Pune", "DOB": "1980-01-01" },
+      { "employeeNumber": 4, "username": "Name4", "address": "Thane", "DOB": "1980-01-01" },
+      { "employeeNumber": 5, "username": "Name5", "address": "Baner", "DOB": "1980-01-01" }
+    ],
+    "products": [
+      { "productName": "Chawal", "quantity": 30, "price": 500},
+      { "productName": "Atta", "quantity": 500, "price": 500},
+      { "productName": "Gehu", "quantity": 60, "price": 500 },
+      { "productName": "Makka", "quantity": 10, "price": 500 },
+      { "productName": "Bajra", "quantity": 2, "price": 500 }
+    ],
+    "sales": [
+      { "departmentName": "Captive Services", "employeesCount": 5, "address": "New york"},
+      { "departmentName": "ASL", "employeesCount": 15, "address": "Baner"},
+      { "departmentName": "AuroPay", "employeesCount": 25, "address": "Rabale"},
+      { "departmentName": "GM", "employeesCount": 35, "address": "Ulhasnagar"},
+      { "departmentName": "Payments", "employeesCount": 45, "address": "Panvel"}
+      
+    ]
+  }
+  
