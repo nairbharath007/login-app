@@ -1,0 +1,42 @@
+.navbar-nav .nav-item .nav-div {
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.7s ease; 
+  }
+  
+ 
+  
+  .nav-link {
+    color: white; 
+    border-radius: 5px;
+    margin: 3px;
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+  }
+  
+  .nav-item-active {
+    background-color: #f3860a; 
+    border-radius: 5px;
+    color:black;
+  }
+
+  .nav-item :hover{
+    color:#f3860a;
+  }
+
+  .nav-item-active :hover{
+    color:black;
+  }
+
+  /* .rounded-navbar {
+    border-radius: 5px; 
+  } */
+
+
+ .navbar-dark .navbar-toggler i.fa-bars {
+    color: white !important;
+  }
+  
+  
+  

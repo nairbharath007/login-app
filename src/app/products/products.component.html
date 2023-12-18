@@ -1,38 +1,68 @@
-<div class="container">
-  <h2>Products</h2>
+<div class="container rounded border shadow p-0 mb-3 mt-5 bg-white">
+  <div class="row">
+    <!-- Product Addition Form - 25% width -->
+    <div class="col-md-3 p-3 bg-dark text-white rounded">
+      <h2 class="text-center">Add Product</h2>
 
-  <!-- Product Addition Form -->
-  <form [formGroup]="productForm" (ngSubmit)="addProduct()">
-    <div class="form-group">
-      <label for="productName">Product Name</label>
-      <input type="text" class="form-control" id="productName" formControlName="productName">
-    </div>
-    <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input type="number" class="form-control" id="quantity" formControlName="quantity">
-    </div>
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input type="number" class="form-control" id="price" formControlName="price">
-    </div>
-    <button type="submit" class="btn btn-primary">Add Product</button>
-  </form>
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="mb-4">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" class="form-control" id="productName" formControlName="productName" placeholder="Enter name of product">
+          <div *ngIf="productForm.get('productName')?.errors?.['required'] && productForm.get('productName')?.touched" class="text-danger">
+            Product name is required.
+          </div>
+          <div *ngIf="productForm.get('productName')?.errors?.['minlength'] && productForm.get('productName')?.touched" class="text-danger">
+            Product name must be at least 3 characters.
+          </div>
+          <div *ngIf="productForm.get('productName')?.errors?.['pattern']" class="text-danger">
+            Product name must contain only letters.
+          </div>
+        </div><br>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <select class="form-control" id="quantity" formControlName="quantity" placeholder="Enter quantity">
+            <option [value]="null" disabled selected>Select Quantity</option>
 
-  <!-- Product Table -->
-  <table class="table mt-3">
-    <thead>
-      <tr>
-        <th>Product Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.productName }}</td>
-        <td>{{ product.quantity }}</td>
-        <td>{{ product.price }}</td>
-      </tr>
-    </tbody>
-  </table>
+            <option *ngFor="let quantity of quantityOptions" [value]="quantity">{{ quantity }}</option>
+          </select>    
+          <div *ngIf="productForm.get('quantity')?.errors?.['required'] && productForm.get('quantity')?.touched" class="text-danger">
+            Quantity is required.
+          </div>
+            </div><br>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter Price">
+          <div *ngIf="productForm.get('price')?.errors?.['required'] && productForm.get('price')?.touched" class="text-danger">
+            Price is required.
+          </div>
+          <div *ngIf="productForm.get('price')?.errors?.['min'] && productForm.get('price')?.touched" class="text-danger">
+            Price must be greater than 0.
+          </div>
+        </div><br><br>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Product Table - 75% width -->
+    <div class="col-md-9">
+      <table class="table table-hover shadow table-rounded">
+        <thead class="bg-dark text-white table-dark">
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.productName }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

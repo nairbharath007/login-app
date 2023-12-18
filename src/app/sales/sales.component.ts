@@ -1,48 +1,56 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DataService } from '../services/data.service';
+import { SalesService } from '../services/sales.service';
 
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
-export class SalesComponent {
-  sales: any = [];
+export class SalesComponent implements OnInit {
+  sales: any[] = [];
+  saleForm!: FormGroup;
+  isEditMode: boolean = false;
+  currentSaleId: number | null = null;
 
-  quantities = [10, 20, 30, 40, 50];
-
-  addProductForm = new FormGroup({
-    productName: new FormControl('', [Validators.required]),
-    quantity: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required])
-  });
-
-  constructor(private dataService: DataService) { }
+  constructor(private salesService: SalesService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.sales = this.dataService.getSales();
+    this.sales = this.salesService.getSales();
+    this.initSaleForm();
   }
 
-  addSales() {
-    if (this.addProductForm.valid) {
-      this.dataService.addProduct(this.addProductForm.value);
-      this.sales = this.dataService.getProducts(); // Refresh list
-      this.addProductForm.reset();
+  initSaleForm() {
+    this.saleForm = this.fb.group({
+      departmentName: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z ]+$/)]], 
+      employeesCount: ['', [Validators.required, Validators.min(1)]], 
+      address: ['', Validators.required] 
+    });
+  }
+
+  submitForm() {
+    if (this.saleForm.valid) {
+      if (this.isEditMode && this.currentSaleId !== null) {
+        const updatedSale = { id: this.currentSaleId, ...this.saleForm.value };
+        this.salesService.updateSale(updatedSale);
+      } else {
+        this.salesService.addSale(this.saleForm.value);
+      }
+      this.resetForm();
+      this.sales = this.salesService.getSales();
     }
   }
 
-  // ngOnInit(): void {
-  //   this.dataService.getEmployees().subscribe(data => {
-  //     this.products = data.products;
-  //   });
-  // }
+  resetForm() {
+    this.saleForm.reset();
+    this.isEditMode = false;
+    this.currentSaleId = null;
+  }
 
-  // addProduct() {
-  //   if (this.addProductForm.valid) {
-  //     this.products.push(this.addProductForm.value);
-  //     this.addProductForm.reset();
-  //   }
-  // }
+  startEdit(sale: any) {
+    this.isEditMode = true;
+    this.currentSaleId = sale.id;
+    this.saleForm.patchValue(sale);
+  }
 }
-

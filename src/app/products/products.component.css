@@ -1,0 +1,15 @@
+button{
+    background-color:#f3860a;
+    color: black;
+    font-weight: 500;
+
+
+}
+
+label{
+    color:#f0a754 ;
+    font-weight: 400;
+    font-style: italic;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

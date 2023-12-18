@@ -10,6 +10,8 @@ import { ProductsComponent } from './products/products.component';
 import { SalesComponent } from './sales/sales.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewSalesComponent } from './new-sales/new-sales.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     EmployeesComponent,
     ProductsComponent,
-    SalesComponent
+    SalesComponent,
+    NewSalesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Sales Management</h2>
+  
+    <!-- Form for Adding New Sale -->
+    <form [formGroup]="newSaleForm" (ngSubmit)="addSale()" class="mb-4">
+      <div class="form-group">
+        <label for="newDepartmentName">Department Name</label>
+        <input type="text" class="form-control" id="newDepartmentName" formControlName="departmentName" placeholder="Enter department name">
+      </div>
+      <div class="form-group">
+        <label for="newEmployeesCount">Employees Count</label>
+        <input type="number" class="form-control" id="newEmployeesCount" formControlName="employeesCount" placeholder="Enter number of employees">
+      </div>
+      <div class="form-group">
+        <label for="newAddress">Address</label>
+        <input type="text" class="form-control" id="newAddress" formControlName="address" placeholder="Enter address">
+      </div>
+      <button type="submit" class="btn btn-success">Add New Sale</button>
+    </form>
+  
+    <!-- Existing Sales Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Department Name</th>
+          <th>Employees Count</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales; let i = index" [formGroup]="saleForms[i]">
+          <td>{{ sale.id }}</td>
+          <td>
+            <input type="text" class="form-control" formControlName="departmentName">
+          </td>
+          <td>
+            <input type="number" class="form-control" formControlName="employeesCount">
+          </td>
+          <td>
+            <input type="text" class="form-control" formControlName="address">
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="updateSale(i)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

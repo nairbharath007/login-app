@@ -1,22 +1,26 @@
-<div class="container">
-    <!-- <h2>Employee List</h2> -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Employee Number</th>
-          <th>Username</th>
-          <th>Address</th>
-          <th>Date of Birth</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees">
-          <td>{{ employee.employeeNumber }}</td>
-          <td>{{ employee.username }}</td>
-          <td>{{ employee.address }}</td>
-          <td>{{ employee.DOB }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container my-8">
+  <div class="row justify-content-center">
+    <div class="col-12"> 
+      <div class="table-responsive mt-5">
+        <table class="table table-hover table-striped shadow">
+          <thead class="bg-dark text-white table-dark">
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Date of Birth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>{{ employee.employeeNumber }}</td>
+              <td>{{ employee.username }}</td>
+              <td>{{ employee.address }}</td>
+              <td>{{ employee.DOB }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  
+</div>

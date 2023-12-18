@@ -9,27 +9,38 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  private users = [
+    { username: 'admin', password: 'admin123' },
+    { username: 'user1', password: 'password1' },
+    { username: 'user2', password: 'password2' }
+  ];
+
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
 
-  // Hardcoded credentials
-  private validUsername = 'admin';
-  private validPassword = 'admin123';
+ 
 
+  invalidCredentials = false;
   constructor(private router: Router) {}
 
   login() {
-    if (this.loginForm.valid) {
-      if (this.loginForm.value.username === this.validUsername && this.loginForm.value.password === this.validPassword) {
-        // Logic to navigate to the main page
-        this.router.navigate(['/navbar'])   
-      } else {
-        // Handle invalid credentials
-        alert("Invalid Credentials.")
-      }
+    const user = this.users.find(u => 
+      u.username === this.loginForm.value.username && 
+      u.password === this.loginForm.value.password
+    );
+
+    if (user) {
+      this.router.navigate(['/navbar']);
+      this.invalidCredentials = false;
+    } else {
+      this.invalidCredentials = true;
     }
+  }
+
+    closeAlert() {
+      this.invalidCredentials = false;  
   }
 }
 

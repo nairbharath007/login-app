@@ -1,0 +1,105 @@
+/* Login Form Custom Styles */
+.container {
+    /* margin-top: 5%; */
+    padding: 115px;
+  }
+
+  .login-page-background {
+    /* background-image: url('../../assets/sample1.webp'); */
+    background-color: grey;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute; /* Position it absolutely within the relative container */
+    top: 0;
+    left: 0;
+  }
+  
+  .login-background-blur {
+    position: relative; 
+    height: 100vh;
+    backdrop-filter: blur(15px); 
+    /* z-index: -1; */
+  }
+  
+  .form-control {
+    border-radius: 0.25rem;
+  }
+  
+  .btn-primary {
+    background-color: #e27d60;
+    /* background-color: #501b1d; */
+
+    /* border-color: # 007bff; */
+  }
+  
+  .btn-primary:hover {
+    /* background-color: #0056b3; */
+    /* border-color: #0056b3; */
+  }
+
+  /* Custom style for the button icon */
+.btn i {
+  font-size: 1.25rem; /* Adjust icon size */
+  /* You can add padding or margin if needed */
+}
+
+  
+  /* Additional styles as needed */
+/*   
+  button{
+    background-color:#f3860a;
+    color: black;
+    font-weight: 500;
+
+
+} */
+
+label{
+    color:#501b1d ;
+    font-weight: 500;
+    /* font-style: italic; */
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+/* Styling the form background */
+.form-bg {
+  background-color: #85dcb8;
+  color: #e27d60; /* Change text color to white for better readability */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Styling label text color */
+/* .label-peach {
+  color: peachpuff;
+} */
+
+/* Optionally, you might want to change the input text color for contrast */
+input.form-control {
+  color: black;
+  background-color: white;
+}
+
+/* You can also style other elements like buttons, placeholders, etc., as needed */
+
+
+
+
+.container {
+  /* background-image: url('../../assets/sample1.webp');  */
+  background-size: cover; /* Cover the entire page */
+  background-position: center; /* Center the image */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+
+.login-h3 {
+  font-weight: bold;
+  color: #b45155;
+  font-size: 2.0rem;
+}
